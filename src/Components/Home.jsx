@@ -1,34 +1,23 @@
 import React, { useState, useEffect } from "react";
 
-const url = "https://finsta-v2.herokuapp.com/api/users";
-
 export default function Home() {
-  const [image, setImage] = useState([]);
+  const [users, setUsers] = useState([]);
 
-  const getImage = async () => {
-    const response = await fetch(url);
-    const image = await response.json();
-    setImage(image);
-    console.log(image);
-  };
   useEffect(() => {
-    getImage();
+    fetch("https://finsta-v2.herokuapp.com/api/users")
+      .then((res) => res.json())
+      .then((res) => {
+        setUsers(res);
+      })
+      .catch(console.error);
   }, []);
 
-  const imageData = image.results;
-
-  if (image.length < 1) {
-    return <h3> loading....</h3>;
-  }
-
   return (
-    <div className="HomeHeader">
-      <h1>home test</h1>
-      <div className="ImageContainer">
-        {imageData.map((image) => {
-          return `username: ${image.username}`;
-        })}
-      </div>
+    <div className="holder">
+      <h3>home test</h3>
+      {users.map((user) => {
+        return <div>{user.username}</div>;
+      })}
     </div>
   );
 }
