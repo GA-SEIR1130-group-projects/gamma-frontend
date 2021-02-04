@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const url = "https://gamma-finsta.herokuapp.com/api/users";
+const url = "https://finsta-v2.herokuapp.com/api/users";
 
 export default function Home() {
   const [image, setImage] = useState([]);
@@ -9,6 +9,7 @@ export default function Home() {
     const response = await fetch(url);
     const image = await response.json();
     setImage(image);
+    console.log(image);
   };
   useEffect(() => {
     getImage();
@@ -24,7 +25,7 @@ export default function Home() {
     <div className="HomeHeader">
       <h1>home test</h1>
       <div className="ImageContainer">
-        {imageData.map((image, index) => {
+        {imageData.map((image) => {
           return `username: ${image.username}`;
         })}
       </div>
