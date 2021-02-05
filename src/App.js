@@ -7,6 +7,7 @@ import Home from "./Components/Home";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Login from "./Components/Login";
+import UserProfile from "./Components/UserProfile";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <div className="Home">
         <Route path="/" exact component={Home} />
         <Route path="/login" component={Login} />
+        <Route path="/api/users/:id" component={UserProfile} />
       </div>
 
       <div className="footer">
