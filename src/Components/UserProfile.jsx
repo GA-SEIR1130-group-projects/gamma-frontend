@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Button from "react-bootstrap/Button";
+
+const axios = require("axios");
 
 function UserProfile(props) {
   const [userProfile, setUserProfile] = useState([]);
