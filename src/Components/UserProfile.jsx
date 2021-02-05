@@ -48,16 +48,25 @@ function UserProfile(props) {
           </Col>
           <Col>
             <div className="user-buttons">
-              <Form>
-                <Form.Control placeholder="username"></Form.Control>
+              <Form inline>
+                <Form.Control
+                  placeholder="username"
+                  id="inlineFormInputUsername"
+                ></Form.Control>
                 <Button variant="primary"> Update Name</Button>
               </Form>
-              <Form>
-                <Form.Control placeholder="location"></Form.Control>
+              <Form inline>
+                <Form.Control
+                  placeholder="location"
+                  id="inlineFormInputLocation"
+                ></Form.Control>
                 <Button variant="primary"> Update Location</Button>
               </Form>
-              <Form>
-                <Form.Control placeholder="description"></Form.Control>
+              <Form inline>
+                <Form.Control
+                  placeholder="description"
+                  id="inlineFormDescLocation"
+                ></Form.Control>
                 <Button variant="primary"> Update Description</Button>
               </Form>
             </div>
