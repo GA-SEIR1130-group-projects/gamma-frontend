@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import axios from "axios";
 import Home from "./Components/Home";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
