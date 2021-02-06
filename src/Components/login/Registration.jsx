@@ -29,7 +29,7 @@ export default function RegistrationForm() {
         
         if(info.firstname.length && info.lastname.length && info.username.length && info.password.length) {
             console.log("Connecting to url")
-            axios.post("http://localhost:2000/users", info)
+            axios.post("https://finsta-v2.herokuapp.com/api/users", info)
             .then(res => {
                 console.log(res)
             }, err => {
