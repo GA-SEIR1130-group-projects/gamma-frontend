@@ -72,6 +72,11 @@ function UserProfile(props) {
             </div>
           </Col>
         </Row>
+
+        <Row>
+          {" "}
+          <h1> password reset placeholder</h1>
+        </Row>
       </Container>
     </div>
   );
