@@ -1,6 +1,6 @@
 import React from "react";
 import Log from "./login/Header"
-import RegistrationForm from "./login/RegistrationForm"
+import RegistrationForm from "./login/Registration"
 import { BrowserRouter as Router} from "react-router-dom"
 
 export default function Login() {
