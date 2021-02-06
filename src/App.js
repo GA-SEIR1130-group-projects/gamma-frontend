@@ -9,6 +9,7 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Login from "./Components/Login";
 import UserProfile from "./Components/UserProfile";
+import PicturePost from "./Components/PicturePost"
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/api/users/:id" component={UserProfile} />
       </div>
+      
+      <Route path="/post" exact component={PicturePost}/>        
 
       <div className="footer">
         <Footer />
