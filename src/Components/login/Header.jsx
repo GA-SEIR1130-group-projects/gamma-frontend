@@ -18,7 +18,7 @@ export default function Header() {
         console.log("Signin complete")
 
     }
-
+  //filler text
     const handleUsername = event => {
         const userInput = event.target.value.toLowerCase()
         setSign(prevState => {
