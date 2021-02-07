@@ -4,6 +4,8 @@ import axois from "axios"
 import axios from "axios"
 import { fireEvent } from "@testing-library/react"
 
+import UserProfile from '../UserProfile';
+
 export default function Header() {
     
     const initialSignIn = {
@@ -23,17 +25,12 @@ export default function Header() {
             .then(res => {
                 setUsers(res)
             })
+        
     }, [])
 
 
     console.log(signIn)
     const Signin = (event) => {
-        console.log("Starting login...")
-        // axois.post("https://finsta-v2.herokuapp.com/api/users/login", signIn)
-        // .then((req, res) => {
-        //         console.log(req, res)
-        //      })
-        // console.log("Signin complete")
         event.preventDefault()
 
         users.forEach(user => {
@@ -47,9 +44,15 @@ export default function Header() {
                 })
             }
         })
+        
+        if(profile !== null) {
+            <UserProfile profile={profile}/>
+        }
 
         setSign(initialSignIn);
     }
+
+    
 
   
     const handleUsername = event => {
@@ -72,6 +75,7 @@ export default function Header() {
         })
     }
 
+    
     return(
         <nav className="navbar navbar-dark bg-primary" >
             <div className="row col-12 flex-column justify-content-center text-white">

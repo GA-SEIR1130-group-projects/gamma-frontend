@@ -8,9 +8,20 @@ import FormControl from "react-bootstrap/FormControl";
 
 const axios = require("axios");
 
-function UserProfile(props) {
-  const [userProfile, setUserProfile] = useState([]);
+function UserProfile({ profile }) {
+  const [userProfile, setUserProfile] = useState(null);
 
+  useEffect(() => {
+
+    if(profile) {
+      setUserProfile(profile)
+    } else {
+      setUserProfile(null)
+    }
+
+  }, [])
+
+/* 
   useEffect(() => {
     fetch(`https://finsta-v2.herokuapp.com/api/users/${props.match.params.id}`)
       .then((res) => res.json())
@@ -29,9 +40,11 @@ function UserProfile(props) {
   if (!userProfile.location) {
     userProfile.location = " parts unkown";
   }
+*/
 
   return (
     <div className="profile-holder">
+      {/*
       <Container>
         <Row>
           <Col>
@@ -78,6 +91,7 @@ function UserProfile(props) {
           <h1> password reset placeholder</h1>
         </Row>
       </Container>
+      */}
     </div>
   );
 }

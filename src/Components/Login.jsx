@@ -1,5 +1,5 @@
 import React from "react";
-import Log from "./login/Header"
+import Log from "./login/Log"
 import RegistrationForm from "./login/Registration"
 import { BrowserRouter as Router} from "react-router-dom"
 
