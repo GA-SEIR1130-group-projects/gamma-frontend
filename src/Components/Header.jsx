@@ -8,7 +8,7 @@ export default function Header() {
       <div className="NavLinks">
         <Link to="/"> home </Link>
         <Link to="/login">| login |</Link>
-        <Link to="/api/users/:id"> User Profile |</Link>
+        <Link to="/userprofile"> User Profile |</Link>
       </div>
     </div>
   );

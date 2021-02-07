@@ -9,15 +9,34 @@ import FormControl from "react-bootstrap/FormControl";
 const axios = require("axios");
 
 function UserProfile({ profile }) {
-  const [userProfile, setUserProfile] = useState(null);
+  const [userProfile, setUserProfile] = useState({
+    firstname: "",
+    lastname: "",
+    username: "",
+    password: "",
+    desc: "",
+    images: []
+  });
 
   useEffect(() => {
 
-    if(profile) {
-      setUserProfile(profile)
-    } else {
-      setUserProfile(null)
+    let userId = 0;
+    if(localStorage.getItem("user-id")) {
+      userId = JSON.parse(localStorage.getItem("user-id"))
     }
+
+    axios.get(`https://finsta-v2.herokuapp.com/api/users/${userId}`)
+      .then(res => {
+        console.log(res.data)
+        setUserProfile({
+          firstname: res.data.firstname,
+          lastname: res.data.lastname,
+          username: res.data.username,
+          password: res.data.password,
+          desc: res.data.desc,
+          images: res.data.images
+        });
+      })
 
   }, [])
 
@@ -44,16 +63,16 @@ function UserProfile({ profile }) {
 
   return (
     <div className="profile-holder">
-      {/*
+      
       <Container>
         <Row>
           <Col>
             <div className="username">
               <h2>{userProfile.username}</h2>
             </div>
-            <div className="user-name">name:{userProfile.name}</div>
+            <div className="user-name">name:{userProfile.firstname}</div>
             <div className="user-location">
-              location: {userProfile.location}
+              {/* location: {userProfile.location} */}
             </div>
             <div className="user-desc">
               <p>description: {userProfile.desc}</p>
@@ -91,7 +110,19 @@ function UserProfile({ profile }) {
           <h1> password reset placeholder</h1>
         </Row>
       </Container>
-      */}
+
+      <Container className="user-pictures">
+        {
+          userProfile.images ?
+          userProfile.images.map(image => {
+            return(
+              <div className="image">{image.url}</div>
+            );
+          }): 
+          null
+        }
+      </Container>
+     
     </div>
   );
 }

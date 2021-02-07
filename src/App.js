@@ -20,7 +20,7 @@ function App() {
 
       <div className="Home">
         <Route path="/" exact component={Home} />
-        <Route path="/api/users/:id" component={UserProfile} />
+        <Route path="/userprofile" exact component={UserProfile}/>
       </div>
       
       <Route path="/login" component={Login} />

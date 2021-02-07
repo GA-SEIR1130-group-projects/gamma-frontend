@@ -25,7 +25,7 @@ export default function Header() {
             .then(res => {
                 setUsers(res)
             })
-        
+
     }, [])
 
 
@@ -34,20 +34,20 @@ export default function Header() {
         event.preventDefault()
 
         users.forEach(user => {
+
             if(
                 user.username === signIn.username &&
                 user.password === signIn.password
             ) {
-                axios.get(`https://finsta-v2.herokuapp.com/api/users/${user._id}`)
-                .then(res => {
-                    setProfile(res.data);
-                })
+                // axios.get(`https://finsta-v2.herokuapp.com/api/users/${user._id}`)
+                // .then(res => {
+                //     setProfile(res.data);
+                // })
+
+                localStorage.setItem('user-id', JSON.stringify(user._id))
             }
         })
         
-        if(profile !== null) {
-            <UserProfile profile={profile}/>
-        }
 
         setSign(initialSignIn);
     }
@@ -100,7 +100,7 @@ export default function Header() {
                         className="d-flex justify-content-center"
                         type="submit"
                         onClick={Signin}
-                    > Login
+                    > <Link to="/userprofile">Login</Link>
                     </button>
                     Not a member? <Link to={"/Register"} className="text-warning">
                         Register here
