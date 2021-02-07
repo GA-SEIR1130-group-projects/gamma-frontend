@@ -6,7 +6,7 @@ import { BrowserRouter as Router} from "react-router-dom"
 export default function Login() {
   return (
     <Router>
-      <div className="App" >
+      <div className="Login" >
         <Log/>
 
         <div className="container d-flex align-items-center flex-column" >
