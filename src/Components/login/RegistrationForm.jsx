@@ -1,106 +1,100 @@
 import React, {useState} from "react"
-const axios = require('axios');
+// const axios = require('axios');
+import axios from "axios"
 
 
-console.log("Hello this is working, revised")
 export default function RegistrationForm() {
-    const url = "https://finsta-v2.herokuapp.com/api/users"
-    const [Username, setUser] = useState("")
-    const [Password, setPassword] = useState("")
-    const [somedata, setData] = useState([])
-    console.log("Hello this is working2")
+    const [info, setInfo] = useState({
+        firstname: "",
+        lastname: "",
+        username: "",
+        password: ""
+    })
+    console.log("This is working")
 
-    
-    const handleSubmitClick = e => {
-        e.preventDefault()
-        if(Password === Password.confirmPassword) {
-            sendDetailsToServer()
-        }
-        //  else {
-        //     props.showError("Passwords do not match")
-        // }
-    }
+
     const clicked = () => {
-        console.log(clicked)
-    }
-
-    const sendDetailsToServer = () => {
         console.log("clicked")
-        if(Username.length && Password.length) {
-            // props.showError(null)
-            const payload={
-                "username":Username,
-                "password":Password,
-            }
-            const url2 = "http://localhost:2000/users"
-            axios.post(url2, payload)
-            console.log("some new text")
-                .then(function(res) {
-                    if(res.status === 200) {
-                        setPassword(obj => ({
-                            ...obj,
-                            "successMessage": "Registration successful. Redirecting to home page..."
-                        }))
-                    console.log(Password)
-                    // props.showError(null)
-                    }
-                    //  else {
-                    //     props.showError("an error has ocurred")
-                    // }
-                })
-                .catch(function(err) {
-                    console.log(err)
-                })
-        } else {
-            // props.showError("Please enter valid username and password")
-        }
+    }    
+    const handleSubmitClick = e => {
+        clicked()
+        e.preventDefault()
+        sendDetailsToServer()
+
     }
 
-    const handleUsername = event => {
-        const userInput = event.target.value.toLowerCase()
-        setUser(userInput)
+    console.log(info)
+    const sendDetailsToServer = () => {
+        console.log("Starting process...")
+        
+        if(info.firstname.length && info.lastname.length && info.username.length && info.password.length) {
+            console.log("Connecting to url")
+            axios.post("http://localhost:2000/users", info)
+            .then(res => {
+                console.log(res)
+            }, err => {
+                console.log(err)
+            })
+}
     }
 
-    const handlePassword = event => {
-        const userInput = event.target.value.toLowerCase()
-        setPassword(userInput)
+    const handleChange = event => {
+        const {id , value} = event.target
+        setInfo(prestate => ({
+            ...prestate,
+            [id] : value
+        }))
     }
+
 
     return(
         <div className="card col-12 col-lg-4 login-card mt-2 hv-center" >
             <form>
+            <small id="usernameHelp" className="form-text text-muted" >We never share personal information, this is a safe space.</small>
+
+                <div className="form-group">
+                    <label htmlFor="Fname">First name here</label>
+                    <input type="text"
+                           className="form-control"
+                           id="firstname"
+                           placeholder="First Name Here"
+                           onChange={handleChange}
+                    />
+                    <label htmlFor="Lname">Last name here</label>
+                    <input type="text"
+                           className="form-control"
+                           id="lastname"
+                           placeholder="Last Name Here"
+                           onChange={handleChange}
+                    />
+                </div>
                 <div className="form-group text-left" >
-                    <label htmlFor="exampleinputusername">username address</label>
-                    <input type="username"
+                    <label htmlFor="exampleinputusername">Username </label>
+                    <input type="text"
                            className="form-conrol"
                            id="username"
                            aria-describedby="usernameHelp"
                            placeholder="Enter username"
-                           value={Username}
-                           onChange={handleUsername}
+                        //    value={Username}
+                           onChange={handleChange}
                     />
-                    <small id="usernameHelp" className="form-text text-muted" >We'll never share your username with anyone else.</small>
                 </div>
                 <div className="form-group text-left">
                     <label htmlFor="exampleinputPassword">Confirm Password</label>
-                    <input type="text"
+                    <input type="password"
                            className="form-control"
-                           id="confirmPassword"
+                           id="password"
                            placeholder="Confirm Password"
-                           value={Password}
-                           onChange={handlePassword}
-                    />
-                    <input type="text"
-                            value={Password}
+                        //    value={Password}
+                           onChange={handleChange}
                     />
                 </div>
                 <button type="submit"
                         className="btn btn-primary"
                         onClick={handleSubmitClick}
                 >
-                    Register
+                    Complete Registration
                 </button>
-                <button onClick={clicked} >New Button</button>
             </form>
         </div>
     )
