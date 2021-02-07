@@ -20,6 +20,14 @@
 .NavLink {
   justify-content: flex-start;
 }
+
+.Login {
+  background-color: #464866;
+  margin: 0 auto;
+  width: 80%;
+}
+
+
 /* .App-logo {
   height: 40vmin;
   pointer-events: none;

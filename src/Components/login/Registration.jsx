@@ -5,14 +5,14 @@ import axios from "axios"
 
 export default function RegistrationForm() {
     
-    const initialState = {
+    const initialInfo = {
         firstname: "",
         lastname: "",
         username: "",
         password: ""
     }
 
-    const [info, setInfo] = useState(initialState)
+    const [info, setInfo] = useState(initialInfo)
     console.log("This is working")
 
 
@@ -23,7 +23,7 @@ export default function RegistrationForm() {
         clicked()
         e.preventDefault()
         sendDetailsToServer()
-        setInfo(initialState)
+        setInfo(initialInfo)
     }
 
     console.log(info)
@@ -86,8 +86,9 @@ export default function RegistrationForm() {
         })
     }
 
+    // className="card col-12 col-lg-4 login-card mt-2 hv-center"
     return(
-        <div className="card col-12 col-lg-4 login-card mt-2 hv-center" >
+        <div className="card col-10 login-card mt-2 hv-center">
             <form>
                 <small id="usernameHelp" className="form-text text-muted">
                     We never share personal information, this is a safe space.

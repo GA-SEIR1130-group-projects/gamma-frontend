@@ -20,10 +20,10 @@ function App() {
 
       <div className="Home">
         <Route path="/" exact component={Home} />
-        <Route path="/login" component={Login} />
         <Route path="/api/users/:id" component={UserProfile} />
       </div>
       
+      <Route path="/login" component={Login} />
       <Route path="/post" exact component={PicturePost}/>        
 
       <div className="footer">

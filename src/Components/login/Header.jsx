@@ -1,24 +1,57 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import axois from "axios"
+import axios from "axios"
+import { fireEvent } from "@testing-library/react"
 
 export default function Header() {
-    const [signIn, setSign] = useState({
+    
+    const initialSignIn = {
         username: "",
         password: ""
-    })
+    }
+    
+    const [signIn, setSign] = useState(initialSignIn)
+
+    const [users, setUsers] = useState([])
+    const [profile, setProfile] = useState(null);
+
+
+    useEffect(() => {
+        fetch("https://finsta-v2.herokuapp.com/api/users")
+            .then(res => res.json())
+            .then(res => {
+                setUsers(res)
+            })
+    }, [])
+
 
     console.log(signIn)
-    const Signin = () => {
+    const Signin = (event) => {
         console.log("Starting login...")
-        axois.post("https://finsta-v2.herokuapp.com/api/users/login", signIn)
-        .then((req, res) => {
-                console.log(req, res)
-             })
-        console.log("Signin complete")
+        // axois.post("https://finsta-v2.herokuapp.com/api/users/login", signIn)
+        // .then((req, res) => {
+        //         console.log(req, res)
+        //      })
+        // console.log("Signin complete")
+        event.preventDefault()
 
+        users.forEach(user => {
+            if(
+                user.username === signIn.username &&
+                user.password === signIn.password
+            ) {
+                axios.get(`https://finsta-v2.herokuapp.com/api/users/${user._id}`)
+                .then(res => {
+                    setProfile(res.data);
+                })
+            }
+        })
+
+        setSign(initialSignIn);
     }
-  //filler text
+
+  
     const handleUsername = event => {
         const userInput = event.target.value.toLowerCase()
         setSign(prevState => {
@@ -48,28 +81,27 @@ export default function Header() {
                         <label className="m-1 mr-2">Username:</label>
                         <input type="text"
                                 placeholder="Username"
+                                value={signIn.username}
                                 onChange={handleUsername}
                         />
                         
                         <label className="m-1 mr-2">Password:</label>
                         <input type="password"
                                 placeholder="Password"
+                                value={signIn.password}
                                 onChange={handlePassword}
-
                         />
-
                     </form>
                     <button
                         className="d-flex justify-content-center"
+                        type="submit"
                         onClick={Signin}
-                    >
-                        Login
+                    > Login
                     </button>
                     Not a member? <Link to={"/Register"} className="text-warning">
                         Register here
                     </Link>
                 </div>
-
             </div>
         </nav>
     )
