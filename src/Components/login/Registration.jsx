@@ -88,7 +88,7 @@ export default function RegistrationForm() {
 
     // className="card col-12 col-lg-4 login-card mt-2 hv-center"
     return(
-        <div className="card col-10 login-card mt-2 hv-center">
+        <div className="Registration card col-10 login-card mt-2 hv-center">
             <form>
                 <small id="usernameHelp" className="form-text text-muted">
                     We never share personal information, this is a safe space.
