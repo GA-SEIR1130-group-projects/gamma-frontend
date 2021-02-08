@@ -9,6 +9,7 @@ import FormControl from "react-bootstrap/FormControl";
 const axios = require("axios");
 
 function UserProfile({ profile }) {
+  
   const [userProfile, setUserProfile] = useState({
     firstname: "",
     lastname: "",
@@ -18,9 +19,14 @@ function UserProfile({ profile }) {
     images: []
   });
 
-  useEffect(() => {
+  
+  const [images, setImages] = useState([
+    { url: ""}
+  ]);
 
+  useEffect(() => {
     let userId = 0;
+    
     if(localStorage.getItem("user-id")) {
       userId = JSON.parse(localStorage.getItem("user-id"))
     }
@@ -36,30 +42,41 @@ function UserProfile({ profile }) {
           desc: res.data.desc,
           images: res.data.images
         });
+
+        setImages(res.data.images)
       })
 
   }, [])
 
-/* 
-  useEffect(() => {
-    fetch(`https://finsta-v2.herokuapp.com/api/users/${props.match.params.id}`)
-      .then((res) => res.json())
-      .then((res) => {
-        setUserProfile(res);
-      })
-      .catch(console.error);
-  }, [props.match.params.id]);
+  const imageSubmit = e => {
+    e.preventDefault();
 
-  if (!userProfile) {
-    return <h3>loading...</h3>;
+    let userId = 0;
+    if(localStorage.getItem("user-id")) {
+      userId = JSON.parse(localStorage.getItem("user-id"))
+    }
+
+    axios.put(`https://finsta-v2.herokuapp.com/api/users/${userId}`, {
+      images: images
+    })
+
+    setImages(userProfile.images);
   }
-  if (!userProfile.name) {
-    userProfile.name = " unknown";
+
+  function imageChange(event) {
+    const userInput = event.target.value;
+    setImages(prevState => {
+      return(
+        [
+          ...prevState,
+          {
+            url: userInput
+          }
+        ]
+      );
+    })
   }
-  if (!userProfile.location) {
-    userProfile.location = " parts unkown";
-  }
-*/
+
 
   return (
     <div className="profile-holder">
@@ -104,6 +121,23 @@ function UserProfile({ profile }) {
             </div>
           </Col>
         </Row>
+
+        <button type="button" class="btn btn-dark float-right">Add Picture</button>
+
+        <form class="form-group">
+          <input 
+            type="text" 
+            className="form-control" 
+            placeholder="image url"
+            value={images[images.length - 1].url}
+            onChange={imageChange}
+          />
+          <button 
+            type="submit" 
+            className="btn btn-primary"
+            onClick={imageSubmit}
+          >submit pic</button>
+        </form>
 
         <Row>
           {" "}
