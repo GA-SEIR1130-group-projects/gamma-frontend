@@ -1,12 +1,12 @@
 import React from "react";
-import Log from "./login/Header"
-import RegistrationForm from "./login/RegistrationForm"
+import Log from "./login/Log"
+import RegistrationForm from "./login/Registration"
 import { BrowserRouter as Router} from "react-router-dom"
 
 export default function Login() {
   return (
     <Router>
-      <div className="App" >
+      <div className="Login" >
         <Log/>
 
         <div className="container d-flex align-items-center flex-column" >
