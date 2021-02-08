@@ -42,6 +42,7 @@ function UserProfile({ profile }) {
           desc: res.data.desc,
           images: res.data.images
         });
+
       })
 
   }, [])
@@ -54,9 +55,8 @@ function UserProfile({ profile }) {
       userId = JSON.parse(localStorage.getItem("user-id"))
     }
 
-    axios.put(`https://finsta-v2.herokuapp.com/api/users/${userId}`, {
-      images: userProfile.images.push(image)
-    })
+    let allImages = userProfile.images.push(image)
+    axios.put(`https://finsta-v2.herokuapp.com/api/users/${userId}/images`, image)
 
     setImage(initialImage)
   }
