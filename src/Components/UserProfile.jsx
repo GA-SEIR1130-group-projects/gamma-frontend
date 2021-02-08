@@ -24,8 +24,12 @@ function UserProfile({ profile }) {
   const initialName = {
     firstname: "",
   };
+  const initialDesc = {
+    desc: "",
+  };
   const [name, setName] = useState(initialName);
   const [image, setImage] = useState(initialImage);
+  const [desc, setDesc] = useState(initialDesc);
 
   useEffect(() => {
     let userId = 0;
@@ -99,7 +103,32 @@ function UserProfile({ profile }) {
       };
     });
   }
-  /////////////////
+  ///////////////////// user description update
+
+  const descSubmit = (e) => {
+    e.preventDefault();
+
+    let userId = 0;
+    if (localStorage.getItem("user-id")) {
+      userId = JSON.parse(localStorage.getItem("user-id"));
+    }
+
+    let theName = userProfile.images.push(name);
+    axios.put(`https://finsta-v2.herokuapp.com/api/users/${userId}/`, desc);
+
+    setDesc(initialDesc);
+  };
+
+  function descChange(event) {
+    const userInput = event.target.value;
+    setDesc((prevState) => {
+      return {
+        ...prevState,
+        desc: userInput,
+      };
+    });
+  }
+  //////////////
 
   return (
     <div className="profile-holder">
@@ -123,7 +152,6 @@ function UserProfile({ profile }) {
                 inline
                 placeholder="username"
                 id="inlineFormInputUsername"
-                // value={userProfile.firstname}
                 onChange={nameChange}
               >
                 <input
@@ -139,12 +167,23 @@ function UserProfile({ profile }) {
                 </Button>
               </Form>
 
-              <Form inline>
-                <Form.Control
-                  placeholder="description"
-                  id="inlineFormDescLocation"
-                ></Form.Control>
-                <Button variant="primary"> Update Description</Button>
+              <Form
+                inline
+                placeholder="description"
+                id="inlineFormDescLocation"
+                onChange={descChange}
+              >
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="user description"
+                  value={name.desc}
+                  onChange={descChange}
+                />
+                <Button variant="primary" type="submit" onClick={descSubmit}>
+                  {" "}
+                  Update Description
+                </Button>
               </Form>
             </div>
           </Col>
