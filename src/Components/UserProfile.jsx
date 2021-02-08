@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
+
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -7,6 +10,7 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 
 const axios = require("axios");
+
 
 function UserProfile({ profile }) {
   
@@ -83,9 +87,15 @@ function UserProfile({ profile }) {
         null :
         <>
           <div className="btn-group float-right" role="group" aria-label="Basic example">
-            <button type="button" className="btn btn-secondary">Profile</button>
-            <button type="button" className="btn btn-secondary">Edit Profile</button>
-            <button type="button" className="btn btn-secondary">Change Password</button>
+            <button type="button" className="btn btn-secondary">
+              <Link to="/deleteProfile">Delete Profile</Link>
+            </button>
+            <button type="button" className="btn btn-secondary">
+              <Link to="/editProfile">Edit Profile</Link>
+            </button>
+            <button type="button" className="btn btn-secondary">
+              <Link to="/changePassword">Change Password</Link>
+            </button>
             <button 
               type="button" 
               className="btn btn-outline-dark"

@@ -96,16 +96,15 @@ export default function Header() {
                                 onChange={handlePassword}
                         />
                     </form>
-                    <Link to={"/userprofile"}>
-                        Login
-                    </Link>
+                    
                     <button
                         className="d-flex justify-content-center"
                         type="submit"
                         onClick={Signin}
-                    > Login
+                    > 
+                        <Link to="/userprofile">Login</Link>
                     </button>
-                    Not a member? <Link to={"/Register"} className="text-warning">
+                    Not a member? <Link to="/register" className="text-warning">
                         Register here
                     </Link>
                 </div>
