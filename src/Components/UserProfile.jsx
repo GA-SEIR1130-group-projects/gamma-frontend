@@ -19,10 +19,10 @@ function UserProfile({ profile }) {
     images: []
   });
 
-  
-  const [images, setImages] = useState([
-    { url: ""}
-  ]);
+  const initialImage = {
+    url: ""
+  }  
+  const [image, setImage] = useState(initialImage);
 
   useEffect(() => {
     let userId = 0;
@@ -42,8 +42,6 @@ function UserProfile({ profile }) {
           desc: res.data.desc,
           images: res.data.images
         });
-
-        setImages(res.data.images)
       })
 
   }, [])
@@ -57,23 +55,19 @@ function UserProfile({ profile }) {
     }
 
     axios.put(`https://finsta-v2.herokuapp.com/api/users/${userId}`, {
-      images: images
+      images: userProfile.images.push(image)
     })
 
-    setImages(userProfile.images);
+    setImage(initialImage)
   }
 
   function imageChange(event) {
     const userInput = event.target.value;
-    setImages(prevState => {
-      return(
-        [
-          ...prevState,
-          {
-            url: userInput
-          }
-        ]
-      );
+    setImage(prevState => {
+      return({
+        ...prevState,
+        url: userInput
+      })
     })
   }
 
@@ -129,7 +123,7 @@ function UserProfile({ profile }) {
             type="text" 
             className="form-control" 
             placeholder="image url"
-            value={images[images.length - 1].url}
+            value={image.url}
             onChange={imageChange}
           />
           <button 
