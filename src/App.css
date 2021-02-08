@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  width: 80%;
+  margin: 0 auto;
 }
 .Header {
   background-color: #25274d;
@@ -23,6 +25,11 @@
 
 .Login {
   background-color: #464866;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.Registration {
   margin: 0 auto;
   width: 80%;
 }
