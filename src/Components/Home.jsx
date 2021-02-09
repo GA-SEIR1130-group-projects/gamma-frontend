@@ -36,4 +36,33 @@ export default function Home() {
 }
 
 
+/*
+
+users.map(item => {
+  if(item.images.length) {
+    let randIndex = Math.floor(Math.random() * item.images.length)
+
+    if(item.images.length < 5) {
+      for(let i=0; i < item.images.length; i++) {
+        return(
+          <div>
+            <img src={item.images[randIndex].url className="Image"}/>
+          </div>
+        )
+      }
+    } else {
+      for(let i=0; i < 5; i++) {
+        return(
+          <div>
+            <img src={item.images[randIndex].url className="Image"}/>
+          </div>
+        )
+      }
+    }
+  } 
+})
+
+*/
+
+
  
