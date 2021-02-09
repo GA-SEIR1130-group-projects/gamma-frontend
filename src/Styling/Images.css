@@ -1,0 +1,5 @@
+img.Image { max-width: 100%;}
+div#ImageContainer { width: 350px;}
+body{
+    background-color: aqua;
+}

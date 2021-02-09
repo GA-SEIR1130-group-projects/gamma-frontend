@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import '../Styling/Images.css'
 
 export default function Home() {
   const [users, setUsers] = useState([]);
@@ -17,6 +18,7 @@ export default function Home() {
       <h3>home test</h3>
       
       {users.map((user) => {
+        
       
 {
   
@@ -25,7 +27,10 @@ export default function Home() {
             console.log(img2)
             console.log(user.images[0].url) 
             console.log(user)
-            return <img src={img2} alt='https://miro.medium.com/max/3840/1*IXj6F6TiST3LK9r50a-MLw.jpeg'/>
+            
+            return(<div id = 'ImageContainer'> 
+             <img src={user.images[0].url} alt='' class='Image'/>
+             </div>)
           }
         }
 
@@ -34,3 +39,15 @@ export default function Home() {
     </div>
   );
 }
+
+ 
+ /* we need three if statemts
+ user.map
+ for(let i =0; i <5; i++){
+   (item =>{
+
+   })
+ }
+ 
+ */
+ 
