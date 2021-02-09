@@ -17,98 +17,56 @@ export default function Home() {
 
   return (
     <div className="home-container">
-      {users.map((item) => {
-        if (item.images.length) {
-          let randIndex = Math.floor(Math.random() * item.images.length);
+      {
+        users.map((item) => {
+          if (item.images.length) {
+            let randIndex = Math.floor(Math.random() * item.images.length);
 
-          if (item.images.length < 5) {
-            for (let i = 0; i < item.images.length; i++) {
-              return (
-                <CardDeck
-                  style={{ width: "16rem" }}
-                  variant="top"
-                  class="d-flex align-self-start justify-content-center flex-wrap"
-                >
-                  <Card>
-                    <div className="front-images">
-                      <Card.Img src={item.images[randIndex].url} />
-                    </div>
-                  </Card>
-                </CardDeck>
-              );
-            }
-          } else {
-            for (let i = 0; i < 5; i++) {
-              return (
-                <CardDeck
-                  style={{ width: "24rem" }}
-                  variant="top"
-                  class="d-flex align-self-start justify-content-center flex-wrap"
-                >
-                  <Card>
-                    <div class="d-flex flex-wrap" className="front-images">
-                      <Card.Img
-                        variant="top"
-                        src={item.images[randIndex].url}
-                      />
-                    </div>
-                  </Card>
-                </CardDeck>
-              );
+            if (item.images.length < 5) {
+              for (let i = 0; i < item.images.length; i++) {
+                return (
+                  <CardDeck
+                    style={{ width: "16rem" }}
+                    variant="top"
+                    class="d-flex align-self-start justify-content-center flex-wrap"
+                  >
+                    <Card>
+                      <div className="front-images">
+                        <Card.Img src={item.images[randIndex].url} />
+                      </div>
+                    </Card>
+                  </CardDeck>
+                );
+              }
+            } else {
+              for (let i = 0; i < 5; i++) {
+                return (
+                  <CardDeck
+                    style={{ width: "24rem" }}
+                    variant="top"
+                    class="d-flex align-self-start justify-content-center flex-wrap"
+                  >
+                    <Card>
+                      <div class="d-flex flex-wrap" className="front-images">
+                        <Card.Img
+                          variant="top"
+                          src={item.images[randIndex].url}
+                        />
+                      </div>
+                    </Card>
+                  </CardDeck>
+                );
+              }
             }
           }
-        }
-      })}
+        })
+      }
+
     </div>
   );
 }
 
-/* we need three if statemts
-  user.map
-  for(let i =0; i <5; i++){
-    (item =>{
-      
-    })
-  }
-  
-  */
 
-// <div className="holder">
-//   <h3>home test</h3>
-//   {console.log(users)}
-//   {users.map((user) => {
-//     if (user.images.length) {
-//       for (let i = 0; i < 5; i++) {
-//         return (
-//           <div className="image">
-//             <CardDeck style={{ width: "16rem" }}>
-//               <Card border="secondary">
-//                 <Card.Img variant="top" src={users.images} />
-//                 <Card.Body>
-//                   <Card.Text>{users.username}</Card.Text>
-//                 </Card.Body>
-//               </Card>
-//             </CardDeck>
-//           </div>
-//         );
-//       }
-//     }
-//   })}
 
-//   {/* {users.map((user) => {
-//     {
-//       if (user.images[0] != undefined) {
-//         const img2 = `https://finsta-v2.herokuapp.com/api/users${user.images[0]}`;
-//         console.log(img2);
-//         console.log(user.images[0].url);
-//         console.log(user);
+ 
 
-//         return (
-//           <div id="ImageContainer">
-//             <img src={user.images[0].url} alt="" class="Image" />
-//           </div>
-//         );
-//       }
-//     }
-//   })} */}
-// </div>
