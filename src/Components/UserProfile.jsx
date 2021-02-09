@@ -23,26 +23,12 @@ function UserProfile({ profile }) {
   });
 
 
-  const initialName = {
-    firstname: "",
-  };
-  const initialDesc = {
-    desc: "",
-  };
-
   const initialState = {
-    url: "",
-    firstname: "",
-    lastname: "",
-    username: "",
-    password: "",
-    desc: ""
+    url: ""
   }
-  const [name, setName] = useState(initialName);
   const [image, setImage] = useState(initialState.url);
-  const [desc, setDesc] = useState(initialDesc);
-
-
+ 
+  
   useEffect(() => {
     let userId = 0;
 
