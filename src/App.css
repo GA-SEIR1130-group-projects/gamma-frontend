@@ -51,6 +51,9 @@
 }
 
 .home-container {
+  /* background-color: #25274d; */
+  display: flex;
+  overflow: hidden;
 }
 /* .App-logo {
   height: 40vmin;
