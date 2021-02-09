@@ -156,8 +156,8 @@ function UserProfile({ profile }) {
           ? userProfile.images.map((image) => {
               return (
                 <div className="image">
-                  <CardDeck>
-                    <Card border="secondary" style={{ width: "16rem" }}>
+                  <CardDeck style={{ width: "16rem" }}>
+                    <Card border="secondary">
                       <Card.Img variant="top" src={image.url} />
                       <Card.Body>
                         <Card.Text>{image.comments}</Card.Text>
