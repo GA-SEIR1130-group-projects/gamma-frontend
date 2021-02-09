@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-// const axios = require('axios');
 import axios from "axios"
 
 
@@ -46,45 +45,13 @@ export default function RegistrationForm() {
         }
     }
 
-    const handleLast = event => {
-        const userInput = event.target.value.toLowerCase()
-        setInfo(prevState => {
-            return {
-                ...prevState,
-                lastname: userInput
-            }
-        })
-    }
-
-    const handleFirst = event => {
-        const userInput = event.target.value.toLowerCase()
-        setInfo(prevState => {
-            return {
-                ...prevState,
-                firstname: userInput
-            }
-        })
-    }
-
-    const handleUsername = event => {
-        const userInput = event.target.value.toLowerCase()
-        setInfo(prevState => {
-            return {
-                ...prevState,
-                username: userInput
-            }
-        })
-    }
-
-    const handlePassword = event => {
-        const userInput = event.target.value.toLowerCase()
-        setInfo(prevState => {
-            return {
-                ...prevState,
-                password: userInput
-            }
-        })
-    }
+    const handleChange = event => {
+        const {id , value} = event.target
+        setInfo(prestate => ({
+            ...prestate,
+            [id] : value
+        }))
+    }  
 
     // className="card col-12 col-lg-4 login-card mt-2 hv-center"
     return(
@@ -97,17 +64,19 @@ export default function RegistrationForm() {
                 <div className="form-group">
                     <label htmlFor="Fname">First name here</label>
                     <input type="text"
+                           id="firstname"
                            className="form-control"
                            placeholder="First Name Here"
                            value={info.firstname}
-                           onChange={handleFirst}
+                           onChange={handleChange}
                     />
                     <label htmlFor="Lname">Last name here</label>
                     <input type="text"
+                           id="lastname"
                            className="form-control"
                            placeholder="Last Name Here"
                            value={info.lastname}
-                           onChange={handleLast}
+                           onChange={handleChange}
                     />
                 </div>
                 <div className="form-group text-left" >
@@ -118,17 +87,17 @@ export default function RegistrationForm() {
                            aria-describedby="usernameHelp"
                            placeholder="Enter username"
                            value={info.username}
-                           onChange={handleUsername}
+                           onChange={handleChange}
                     />
                 </div>
                 <div className="form-group text-left">
                     <label htmlFor="exampleinputPassword">Password</label>
                     <input type="password"
                            className="form-control"
-                           id="confirmPassword"
+                           id="password"
                            placeholder="Confirm Password"
                            value={info.password}
-                           onChange={handlePassword}
+                           onChange={handleChange}
                     />
                 </div>
                 <button type="submit"
