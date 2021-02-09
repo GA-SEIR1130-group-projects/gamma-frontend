@@ -30,7 +30,7 @@ export default function Header() {
 
 
     console.log(signIn)
-<<<<<<< HEAD:src/Components/login/Log.jsx
+
     const Signin = (event) => {
         event.preventDefault()
 
@@ -49,43 +49,18 @@ export default function Header() {
             }
         })
         
-
         setSign(initialSignIn);
-=======
-    const Signin = () => {
-        console.log("Starting login...")
-        axois.post("http://localhost:2000/users/login", signIn)
-        .then(res => {
-            console.log(res.data)
-            console.log("Signin complete")
-        })
->>>>>>> update:src/Components/login/Header.jsx
     }
-
-    
-
   
-    const handleUsername = event => {
-        const userInput = event.target.value.toLowerCase()
-        setSign(prevState => {
-            return {
-                ...prevState,
-                username: userInput
-            }
-        })
-    }
+    const handleChange = event => {
+        const {id , value} = event.target
+        setSign(prestate => ({
+            ...prestate,
+            [id] : value
+        }))
+    }  
 
-    const handlePassword = event => {
-        const userInput = event.target.value.toLowerCase()
-        setSign(prevState => {
-            return {
-                ...prevState,
-                password: userInput
-            }
-        })
-    }
 
-    
     return(
         <nav className="navbar navbar-dark bg-primary" >
             <div className="row col-12 flex-column justify-content-center text-white">
@@ -94,16 +69,18 @@ export default function Header() {
                     <form className=" p-2 m-3">
                         <label className="m-1 mr-2">Username:</label>
                         <input type="text"
+                                id='username'
                                 placeholder="Username"
                                 value={signIn.username}
-                                onChange={handleUsername}
+                                onChange={handleChange}
                         />
                         
                         <label className="m-1 mr-2">Password:</label>
-                        <input type="password"
+                        <input type="password" 
+                                id='password'
                                 placeholder="Password"
                                 value={signIn.password}
-                                onChange={handlePassword}
+                                onChange={handleChange}
                         />
                     </form>
                     
