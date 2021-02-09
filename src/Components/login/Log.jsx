@@ -69,18 +69,18 @@ export default function Header() {
                     <form className=" p-2 m-3">
                         <label className="m-1 mr-2">Username:</label>
                         <input type="text"
-                                id='username'
-                                placeholder="Username"
-                                value={signIn.username}
-                                onChange={handleChange}
+                            id='username'
+                            placeholder="Username"
+                            value={signIn.username}
+                            onChange={handleChange}
                         />
                         
                         <label className="m-1 mr-2">Password:</label>
                         <input type="password" 
-                                id='password'
-                                placeholder="Password"
-                                value={signIn.password}
-                                onChange={handleChange}
+                            id='password'
+                            placeholder="Password"
+                            value={signIn.password}
+                            onChange={handleChange}
                         />
                     </form>
                     
