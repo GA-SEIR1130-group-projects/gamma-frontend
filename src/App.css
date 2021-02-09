@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  width: 80%;
+  margin: 0 auto;
 }
 .Header {
   background-color: #25274d;
@@ -13,13 +15,41 @@
 }
 
 .Home {
-  background-color: #464866;
-  color: #aaabb8;
+  background-color: #cfcfed;
+  color: #434561;
 }
 
 .NavLink {
   justify-content: flex-start;
 }
+
+.Login {
+  background-color: #464866;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.Registration {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.EditProfile > .form-horizontal {
+  display: block;
+  width: 100%;
+  margin: 0 10%;
+  padding-bottom: 5%;
+}
+.EditProfile > h1 {
+  font-weight: 600;
+  font-size: 3rem;
+}
+
+
+
+
+
+
 /* .App-logo {
   height: 40vmin;
   pointer-events: none;
