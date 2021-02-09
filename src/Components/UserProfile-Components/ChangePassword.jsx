@@ -33,6 +33,26 @@ function ChangePassword() {
         })
     }
 
+    function handlePassword(e) {
+        e.preventDefault();
+        axios.put(`https://finsta-v2.herokuapp.com/api/users/${userId}`, {
+            password: password.password
+        })
+
+        setPassword({ password: "" });
+    }
+
+    function changePassword(e) {
+        const userInput = e.target.value;
+        setPassword((prevState) => {
+            return({
+                ...prevState,
+                password: userInput
+            });
+        })
+    }
+
+
     return (
         <div>
             <h1>Change Password</h1>
@@ -41,7 +61,7 @@ function ChangePassword() {
                 <input 
                     type="text" 
                     className="form-control" 
-                    placeholder="Update Password"
+                    placeholder="Update Username"
                     value={username.username}
                     onChange={changeUsername}
                 />
@@ -60,11 +80,26 @@ function ChangePassword() {
                 <div className="modal-dialog model-dialog-centered">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h1>Title</h1>
+                            <h1>Change password</h1>
                         </div>
-                        <div className="modal-body">...</div>
+                        <div className="modal-body">
+                            <div className="form-group col-sm-2">
+                                <input 
+                                    type="password"
+                                    placeholder="new password"
+                                    value={password.password}
+                                    onChange={changePassword}
+                                />
+                            </div>
+                        </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-dark">Change Password</button>
+                            <button 
+                                type="submit" 
+                                className="btn btn-dark" 
+                                data-dismiss="modal" 
+                                onClick={handlePassword}>
+                                Change Password
+                            </button>
                         </div>
                     </div>
                 </div>
