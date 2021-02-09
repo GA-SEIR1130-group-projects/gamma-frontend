@@ -120,30 +120,57 @@ function UserProfile({ profile }) {
               </Col>
             </Row>
 
-            <button type="button" class="btn btn-dark float-right">
-              Add Picture
-            </button>
 
-            <form class="form-group">
-              <div class="input-group mb-3">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="image url"
-                  value={image.url}
-                  onChange={imageChange}
-                />
-                <div className="input-group-append">
-                  <button
-                    type="submit"
-                    className="btn btn-primary"
-                    onClick={imageSubmit}
-                  >
-                    submit pic
-                  </button>
+            
+
+            <button 
+              type="button" 
+              className="btn btn-dark"
+              data-toggle="modal"
+              data-target="#addPicturesModal"
+            >Add Picture</button>
+
+            <div className="modal fade" id="addPicturesModal">
+              <div className="modal-dialog modal-dialog-centered">
+                <div className="modal-content">
+                  <div className="modal-header">Insert Images</div>
+
+                  <div className="modal-body">
+                    <form>
+                      <div className="form-group">
+                        <label for="imageUrl">Image url</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="image url"
+                          value={image.url}
+                          onChange={imageChange}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label for="imageDescription" className="float-left">Description</label>
+                        <input 
+                          type="text"
+                          className="form-control"
+                          placeholder="image description"
+                        />
+                      </div>
+                    </form>
+                  </div>
+
+                  <div className="modal-footer">
+                    <button
+                      type="submit"
+                      className="btn btn-primary"
+                      onClick={imageSubmit}
+                      data-dismiss="modal"
+                    >submit pic</button>
+                  </div>
                 </div>
               </div>
-            </form>
+            </div>
+
+
           </Container>
         </>
       )}
@@ -170,12 +197,7 @@ function UserProfile({ profile }) {
   );
 }
 
+
+
 export default UserProfile;
 
-// //   <Container className="user-pictures">
-//         {userProfile.images
-//           ? userProfile.images.map((image) => {
-//               return <div className="image">{image.url}</div>;
-//             })
-//           : null}
-//       </Container>
