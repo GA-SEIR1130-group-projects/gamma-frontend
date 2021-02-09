@@ -22,13 +22,11 @@ function UserProfile({ profile }) {
     images: [],
   });
 
-
   const initialState = {
-    url: ""
-  }
+    url: "",
+  };
   const [image, setImage] = useState(initialState.url);
- 
-  
+
   useEffect(() => {
     let userId = 0;
 
@@ -50,7 +48,6 @@ function UserProfile({ profile }) {
         });
       });
   }, []);
-
 
   const imageSubmit = (e) => {
     e.preventDefault();
@@ -78,7 +75,6 @@ function UserProfile({ profile }) {
       };
     });
   }
-
 
   function logout() {
     localStorage.clear();
