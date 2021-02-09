@@ -76,9 +76,9 @@ function DeleteProfile() {
     }
 
     return (
-        <div>
+        <div className="DeleteProfile">
             <form>
-                <div class="form-group">
+                <div className="form-group">
                     <label>Username</label>
                     <input 
                         type="text"
@@ -114,7 +114,7 @@ function DeleteProfile() {
                                 className="btn btn-dark"
                                 data-dismiss="modal"
                                 onClick={handleSubmit}>
-                                Delet Account
+                                Delete Account
                             </button>
                         </div>
                     </div>

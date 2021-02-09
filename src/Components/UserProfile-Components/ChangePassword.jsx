@@ -1,4 +1,5 @@
 import React from 'react';
+import "../../Styling/ChangePassword.css"
 import { useState } from 'react';
 import { ImKey } from 'react-icons/im'
 
@@ -54,8 +55,14 @@ function ChangePassword() {
 
 
     return (
-        <div>
+        <div className="ChangePassword">
             <h1>Change Password</h1>
+
+            <button type="button" className="btn btn-dark">
+                <a href="#" data-toggle="modal" data-target="#passwordModal">
+                    <ImKey></ImKey>
+                </a>
+            </button>
 
             <div class="input-group mb-3">
                 <input 
@@ -104,12 +111,6 @@ function ChangePassword() {
                     </div>
                 </div>
             </div>
-
-            <button type="button" className="btn btn-dark">
-                <a href="#" data-toggle="modal" data-target="#passwordModal">
-                    <ImKey></ImKey>
-                </a>
-            </button>
         </div>
     );
 }
