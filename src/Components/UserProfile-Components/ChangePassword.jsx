@@ -1,7 +1,7 @@
 import React from 'react';
 import "../../Styling/ChangePassword.css"
 import { useState } from 'react';
-// import { ImKey } from 'react-icons/im'
+import { ImKey } from 'react-icons/im'
 
 const axios = require("axios");
 
@@ -60,7 +60,7 @@ function ChangePassword() {
 
             <button type="button" className="btn btn-dark">
                 <a href="#" data-toggle="modal" data-target="#passwordModal">
-                    {/* <ImKey></ImKey> */}
+                    <ImKey></ImKey>
                 </a>
             </button>
 

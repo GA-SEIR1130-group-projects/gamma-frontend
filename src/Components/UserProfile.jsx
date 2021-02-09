@@ -24,8 +24,9 @@ function UserProfile({ profile }) {
 
   const initialState = {
     url: "",
+    comment: ""
   };
-  const [image, setImage] = useState(initialState.url);
+  const [image, setImage] = useState(initialState);
 
   useEffect(() => {
     let userId = 0;
@@ -49,7 +50,7 @@ function UserProfile({ profile }) {
       });
   }, []);
 
-  const imageSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     let userId = 0;
@@ -63,7 +64,7 @@ function UserProfile({ profile }) {
       image
     );
 
-    setImage({ url: "" });
+    setImage(initialState);
   };
 
   function imageChange(event) {
@@ -72,6 +73,16 @@ function UserProfile({ profile }) {
       return {
         ...prevState,
         url: userInput,
+      };
+    });
+  }
+
+  function commentChange(event) {
+    const userInput = event.target.value;
+    setImage((prevState) => {
+      return {
+        ...prevState,
+        comment: userInput,
       };
     });
   }
@@ -91,13 +102,28 @@ function UserProfile({ profile }) {
             aria-label="Basic example"
           >
             <button type="button" className="btn btn-secondary">
-              <Link to="/deleteProfile">Delete Profile</Link>
+              <Link 
+                to="/deleteProfile" 
+                style={{
+                  color: "white",
+                  textDecoration: "none"
+                }}>Delete Profile</Link>
             </button>
             <button type="button" className="btn btn-secondary">
-              <Link to="/editProfile">Edit Profile</Link>
+              <Link 
+                to="/editProfile"
+                style={{
+                  color: "white",
+                  textDecoration: "none"
+                }}>Edit Profile</Link>
             </button>
             <button type="button" className="btn btn-secondary">
-              <Link to="/changePassword">Change Password</Link>
+              <Link 
+                to="/changePassword"
+                style={{
+                  color: "white",
+                  textDecoration: "none"
+                }}>Change Password</Link>
             </button>
             <button
               type="button"
@@ -121,8 +147,6 @@ function UserProfile({ profile }) {
             </Row>
 
 
-            
-
             <button 
               type="button" 
               className="btn btn-dark"
@@ -138,7 +162,7 @@ function UserProfile({ profile }) {
                   <div className="modal-body">
                     <form>
                       <div className="form-group">
-                        <label for="imageUrl">Image url</label>
+                        <label for="imageUrl" className="float-left">Image url</label>
                         <input
                           type="text"
                           className="form-control"
@@ -153,6 +177,8 @@ function UserProfile({ profile }) {
                           type="text"
                           className="form-control"
                           placeholder="image description"
+                          value={image.comment}
+                          onChange={commentChange}
                         />
                       </div>
                     </form>
@@ -162,7 +188,7 @@ function UserProfile({ profile }) {
                     <button
                       type="submit"
                       className="btn btn-primary"
-                      onClick={imageSubmit}
+                      onClick={handleSubmit}
                       data-dismiss="modal"
                     >submit pic</button>
                   </div>
@@ -184,7 +210,7 @@ function UserProfile({ profile }) {
                     <Card border="secondary">
                       <Card.Img variant="top" src={image.url} />
                       <Card.Body>
-                        <Card.Text>{image.comments}</Card.Text>
+                        <Card.Text>{image.comment}</Card.Text>
                       </Card.Body>
                     </Card>
                   </CardDeck>
