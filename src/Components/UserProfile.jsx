@@ -7,6 +7,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
+import Card from "react-bootstrap/Card";
+import CardDeck from "react-bootstrap/CardDeck";
 
 const axios = require("axios");
 
@@ -111,12 +113,10 @@ function UserProfile({ profile }) {
             <Row>
               <Col>
                 <div className="username">
-                  <h2>{userProfile.username}</h2>
+                  <h1>{userProfile.username}</h1>
                 </div>
-                <div className="user-name">name:{userProfile.firstname}</div>
-                <div className="user-location">
-                  {/* location: {userProfile.location} */}
-                </div>
+                <div className="user-name">name: {userProfile.firstname}</div>
+
                 <div className="user-desc">
                   <p>description: {userProfile.desc}</p>
                 </div>
@@ -147,11 +147,6 @@ function UserProfile({ profile }) {
                 </div>
               </div>
             </form>
-
-            <Row>
-              {" "}
-              <h1> password reset placeholder</h1>
-            </Row>
           </Container>
         </>
       )}
@@ -159,7 +154,18 @@ function UserProfile({ profile }) {
       <Container className="user-pictures">
         {userProfile.images
           ? userProfile.images.map((image) => {
-              return <div className="image">{image.url}</div>;
+              return (
+                <div className="image">
+                  <CardDeck>
+                    <Card border="secondary" style={{ width: "16rem" }}>
+                      <Card.Img variant="top" src={image.url} />
+                      <Card.Body>
+                        <Card.Text>{image.comments}</Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </CardDeck>
+                </div>
+              );
             })
           : null}
       </Container>
@@ -168,3 +174,11 @@ function UserProfile({ profile }) {
 }
 
 export default UserProfile;
+
+// //   <Container className="user-pictures">
+//         {userProfile.images
+//           ? userProfile.images.map((image) => {
+//               return <div className="image">{image.url}</div>;
+//             })
+//           : null}
+//       </Container>
