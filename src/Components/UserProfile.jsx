@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -10,7 +9,6 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 
 const axios = require("axios");
-
 
 function UserProfile({ profile }) {
   const [userProfile, setUserProfile] = useState({
@@ -25,15 +23,8 @@ function UserProfile({ profile }) {
   const initialImage = {
     url: "",
   };
-  const initialName = {
-    firstname: "",
-  };
-  const initialDesc = {
-    desc: "",
-  };
-  const [name, setName] = useState(initialName);
+
   const [image, setImage] = useState(initialImage);
-  const [desc, setDesc] = useState(initialDesc);
 
   useEffect(() => {
     let userId = 0;
@@ -56,7 +47,6 @@ function UserProfile({ profile }) {
         });
       });
   }, []);
-
 
   //////////// image submit
   const imageSubmit = (e) => {
@@ -85,56 +75,6 @@ function UserProfile({ profile }) {
       };
     });
   }
-  //////////////////////// firstname Update
-  const nameSubmit = (e) => {
-    e.preventDefault();
-
-    let userId = 0;
-    if (localStorage.getItem("user-id")) {
-      userId = JSON.parse(localStorage.getItem("user-id"));
-    }
-
-    let theName = userProfile.images.push(name);
-    axios.put(`https://finsta-v2.herokuapp.com/api/users/${userId}/`, name);
-
-    setName(initialName);
-  };
-
-  function nameChange(event) {
-    const userInput = event.target.value;
-    setName((prevState) => {
-      return {
-        ...prevState,
-        firstname: userInput,
-      };
-    });
-  }
-  ///////////////////// user description update
-
-  const descSubmit = (e) => {
-    e.preventDefault();
-
-    let userId = 0;
-    if (localStorage.getItem("user-id")) {
-      userId = JSON.parse(localStorage.getItem("user-id"));
-    }
-
-    let theName = userProfile.images.push(name);
-    axios.put(`https://finsta-v2.herokuapp.com/api/users/${userId}/`, desc);
-
-    setDesc(initialDesc);
-  };
-
-  function descChange(event) {
-    const userInput = event.target.value;
-    setDesc((prevState) => {
-      return {
-        ...prevState,
-        desc: userInput,
-      };
-    });
-  }
-  //////////////
 
   function logout() {
     localStorage.clear();
@@ -143,11 +83,13 @@ function UserProfile({ profile }) {
 
   return (
     <div className="profile-holder">
-      {
-        localStorage.getItem("user-id") === null ?
-        null :
+      {localStorage.getItem("user-id") === null ? null : (
         <>
-          <div className="btn-group float-right" role="group" aria-label="Basic example">
+          <div
+            className="btn-group float-right"
+            role="group"
+            aria-label="Basic example"
+          >
             <button type="button" className="btn btn-secondary">
               <Link to="/deleteProfile">Delete Profile</Link>
             </button>
@@ -157,8 +99,8 @@ function UserProfile({ profile }) {
             <button type="button" className="btn btn-secondary">
               <Link to="/changePassword">Change Password</Link>
             </button>
-            <button 
-              type="button" 
+            <button
+              type="button"
               className="btn btn-outline-dark"
               onClick={logout}
             >
@@ -179,47 +121,24 @@ function UserProfile({ profile }) {
                   <p>description: {userProfile.desc}</p>
                 </div>
               </Col>
-              <Col>
-                <div className="user-buttons">
-                  <Form inline>
-                    <Form.Control
-                      placeholder="username"
-                      id="inlineFormInputUsername"
-                    ></Form.Control>
-                    <Button variant="primary"> Update Name</Button>
-                  </Form>
-                  <Form inline>
-                    <Form.Control
-                      placeholder="location"
-                      id="inlineFormInputLocation"
-                    ></Form.Control>
-                    <Button variant="primary"> Update Location</Button>
-                  </Form>
-                  <Form inline>
-                    <Form.Control
-                      placeholder="description"
-                      id="inlineFormDescLocation"
-                    ></Form.Control>
-                    <Button variant="primary"> Update Description</Button>
-                  </Form>
-                </div>
-              </Col>
             </Row>
 
-            <button type="button" class="btn btn-dark float-right">Add Picture</button>
+            <button type="button" class="btn btn-dark float-right">
+              Add Picture
+            </button>
 
             <form class="form-group">
               <div class="input-group mb-3">
-                <input 
-                  type="text" 
-                  className="form-control" 
+                <input
+                  type="text"
+                  className="form-control"
                   placeholder="image url"
                   value={image.url}
                   onChange={imageChange}
                 />
                 <div className="input-group-append">
-                  <button 
-                    type="submit" 
+                  <button
+                    type="submit"
                     className="btn btn-primary"
                     onClick={imageSubmit}
                   >
@@ -235,7 +154,7 @@ function UserProfile({ profile }) {
             </Row>
           </Container>
         </>
-      }
+      )}
 
       <Container className="user-pictures">
         {userProfile.images
