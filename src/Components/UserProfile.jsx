@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
+import Card from "react-bootstrap/Card";
+import CardDeck from "react-bootstrap/CardDeck";
 
 const axios = require("axios");
-
 
 function UserProfile({ profile }) {
   const [userProfile, setUserProfile] = useState({
@@ -22,28 +22,13 @@ function UserProfile({ profile }) {
     images: [],
   });
 
-  const initialImage = {
-    url: "",
-  };
-  const initialName = {
-    firstname: "",
-  };
-  const initialDesc = {
-    desc: "",
-  };
 
   const initialState = {
-    url: "",
-    firstname: "",
-    lastname: "",
-    username: "",
-    password: "",
-    desc: ""
+    url: ""
   }
-  const [name, setName] = useState(initialName);
   const [image, setImage] = useState(initialState.url);
-  const [desc, setDesc] = useState(initialDesc);
-
+ 
+  
   useEffect(() => {
     let userId = 0;
 
@@ -93,7 +78,7 @@ function UserProfile({ profile }) {
       };
     });
   }
-  
+
 
   function logout() {
     localStorage.clear();
@@ -102,11 +87,13 @@ function UserProfile({ profile }) {
 
   return (
     <div className="profile-holder">
-      {
-        localStorage.getItem("user-id") === null ?
-        null :
+      {localStorage.getItem("user-id") === null ? null : (
         <>
-          <div className="btn-group float-right" role="group" aria-label="Basic example">
+          <div
+            className="btn-group float-right"
+            role="group"
+            aria-label="Basic example"
+          >
             <button type="button" className="btn btn-secondary">
               <Link to="/deleteProfile">Delete Profile</Link>
             </button>
@@ -116,8 +103,8 @@ function UserProfile({ profile }) {
             <button type="button" className="btn btn-secondary">
               <Link to="/changePassword">Change Password</Link>
             </button>
-            <button 
-              type="button" 
+            <button
+              type="button"
               className="btn btn-outline-dark"
               onClick={logout}
             >
@@ -131,29 +118,28 @@ function UserProfile({ profile }) {
                   <h2>{userProfile.username}</h2>
                 </div>
                 <div className="user-name">name:{userProfile.firstname}</div>
-                {/* <div className="user-location">
-                  location: {userProfile.location}
-                </div> */}
                 <div className="user-desc">
                   <p>description: {userProfile.desc}</p>
                 </div>
               </Col>
             </Row>
 
-            <button type="button" class="btn btn-dark float-right">Add Picture</button>
+            <button type="button" class="btn btn-dark float-right">
+              Add Picture
+            </button>
 
             <form class="form-group">
               <div class="input-group mb-3">
-                <input 
-                  type="text" 
-                  className="form-control" 
+                <input
+                  type="text"
+                  className="form-control"
                   placeholder="image url"
                   value={image.url}
                   onChange={imageChange}
                 />
                 <div className="input-group-append">
-                  <button 
-                    type="submit" 
+                  <button
+                    type="submit"
                     className="btn btn-primary"
                     onClick={imageSubmit}
                   >
@@ -162,19 +148,25 @@ function UserProfile({ profile }) {
                 </div>
               </div>
             </form>
-
-            <Row>
-              {" "}
-              <h1> password reset placeholder</h1>
-            </Row>
           </Container>
         </>
-      }
+      )}
 
       <Container className="user-pictures">
         {userProfile.images
           ? userProfile.images.map((image) => {
-              return <div className="image">{image.url}</div>;
+              return (
+                <div className="image">
+                  <CardDeck style={{ width: "16rem" }}>
+                    <Card border="secondary">
+                      <Card.Img variant="top" src={image.url} />
+                      <Card.Body>
+                        <Card.Text>{image.comments}</Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </CardDeck>
+                </div>
+              );
             })
           : null}
       </Container>
@@ -183,3 +175,11 @@ function UserProfile({ profile }) {
 }
 
 export default UserProfile;
+
+// //   <Container className="user-pictures">
+//         {userProfile.images
+//           ? userProfile.images.map((image) => {
+//               return <div className="image">{image.url}</div>;
+//             })
+//           : null}
+//       </Container>
