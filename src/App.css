@@ -17,6 +17,7 @@
 .Home {
   background-color: #cfcfed;
   color: #434561;
+  height: 100vh;
 }
 
 .NavLink {
@@ -45,11 +46,12 @@
   font-size: 3rem;
 }
 
+.front-images {
+  display: flex;
+}
 
-
-
-
-
+.home-container {
+}
 /* .App-logo {
   height: 40vmin;
   pointer-events: none;
