@@ -22,11 +22,26 @@ function UserProfile({ profile }) {
     images: [],
   });
 
-  const initialImage = {
-    url: "",
+
+  const initialName = {
+    firstname: "",
+  };
+  const initialDesc = {
+    desc: "",
   };
 
-  const [image, setImage] = useState(initialImage);
+  const initialState = {
+    url: "",
+    firstname: "",
+    lastname: "",
+    username: "",
+    password: "",
+    desc: ""
+  }
+  const [name, setName] = useState(initialName);
+  const [image, setImage] = useState(initialState.url);
+  const [desc, setDesc] = useState(initialDesc);
+
 
   useEffect(() => {
     let userId = 0;
@@ -50,7 +65,7 @@ function UserProfile({ profile }) {
       });
   }, []);
 
-  //////////// image submit
+
   const imageSubmit = (e) => {
     e.preventDefault();
 
@@ -65,7 +80,7 @@ function UserProfile({ profile }) {
       image
     );
 
-    setImage(initialImage);
+    setImage({ url: "" });
   };
 
   function imageChange(event) {
@@ -77,6 +92,7 @@ function UserProfile({ profile }) {
       };
     });
   }
+
 
   function logout() {
     localStorage.clear();
@@ -113,10 +129,9 @@ function UserProfile({ profile }) {
             <Row>
               <Col>
                 <div className="username">
-                  <h1>{userProfile.username}</h1>
+                  <h2>{userProfile.username}</h2>
                 </div>
-                <div className="user-name">name: {userProfile.firstname}</div>
-
+                <div className="user-name">name:{userProfile.firstname}</div>
                 <div className="user-desc">
                   <p>description: {userProfile.desc}</p>
                 </div>
