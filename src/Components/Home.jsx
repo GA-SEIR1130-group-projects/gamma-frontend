@@ -17,11 +17,8 @@ export default function Home() {
     <div className="holder">
       <h3>home test</h3>
       
-      {users.map((user) => {
-        
-      
-{
-  
+      {
+        users.map((user) => {
           if (user.images[0] != undefined){
             const img2= `https://finsta-v2.herokuapp.com/api/users${user.images[0]}`
             console.log(img2)
@@ -29,25 +26,14 @@ export default function Home() {
             console.log(user)
             
             return(<div id = 'ImageContainer'> 
-             <img src={user.images[0].url} alt='' class='Image'/>
-             </div>)
+            <img src={user.images[0].url} alt='' class='Image'/>
+            </div>)
           }
-        }
-
-        
-      })}
+        })
+      }
     </div>
   );
 }
 
- 
- /* we need three if statemts
- user.map
- for(let i =0; i <5; i++){
-   (item =>{
 
-   })
- }
- 
- */
  
