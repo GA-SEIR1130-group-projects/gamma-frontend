@@ -13,67 +13,128 @@ const axios = require("axios");
 
 
 function UserProfile({ profile }) {
-  
   const [userProfile, setUserProfile] = useState({
     firstname: "",
     lastname: "",
     username: "",
     password: "",
     desc: "",
-    images: []
+    images: [],
   });
 
   const initialImage = {
-    url: ""
-  }  
+    url: "",
+  };
+  const initialName = {
+    firstname: "",
+  };
+  const initialDesc = {
+    desc: "",
+  };
+  const [name, setName] = useState(initialName);
   const [image, setImage] = useState(initialImage);
+  const [desc, setDesc] = useState(initialDesc);
 
   useEffect(() => {
     let userId = 0;
-    
-    if(localStorage.getItem("user-id")) {
-      userId = JSON.parse(localStorage.getItem("user-id"))
+
+    if (localStorage.getItem("user-id")) {
+      userId = JSON.parse(localStorage.getItem("user-id"));
     }
 
-    axios.get(`https://finsta-v2.herokuapp.com/api/users/${userId}`)
-      .then(res => {
-        console.log(res.data)
+    axios
+      .get(`https://finsta-v2.herokuapp.com/api/users/${userId}`)
+      .then((res) => {
+        console.log(res.data);
         setUserProfile({
           firstname: res.data.firstname,
           lastname: res.data.lastname,
           username: res.data.username,
           password: res.data.password,
           desc: res.data.desc,
-          images: res.data.images
+          images: res.data.images,
         });
+      });
+  }, []);
 
-      })
 
-  }, [])
-
-  const imageSubmit = e => {
+  //////////// image submit
+  const imageSubmit = (e) => {
     e.preventDefault();
 
     let userId = 0;
-    if(localStorage.getItem("user-id")) {
-      userId = JSON.parse(localStorage.getItem("user-id"))
+    if (localStorage.getItem("user-id")) {
+      userId = JSON.parse(localStorage.getItem("user-id"));
     }
 
-    let allImages = userProfile.images.push(image)
-    axios.put(`https://finsta-v2.herokuapp.com/api/users/${userId}/images`, image)
+    let allImages = userProfile.images.push(image);
+    axios.put(
+      `https://finsta-v2.herokuapp.com/api/users/${userId}/images`,
+      image
+    );
 
-    setImage(initialImage)
-  }
+    setImage(initialImage);
+  };
 
   function imageChange(event) {
     const userInput = event.target.value;
-    setImage(prevState => {
-      return({
+    setImage((prevState) => {
+      return {
         ...prevState,
-        url: userInput
-      })
-    })
+        url: userInput,
+      };
+    });
   }
+  //////////////////////// firstname Update
+  const nameSubmit = (e) => {
+    e.preventDefault();
+
+    let userId = 0;
+    if (localStorage.getItem("user-id")) {
+      userId = JSON.parse(localStorage.getItem("user-id"));
+    }
+
+    let theName = userProfile.images.push(name);
+    axios.put(`https://finsta-v2.herokuapp.com/api/users/${userId}/`, name);
+
+    setName(initialName);
+  };
+
+  function nameChange(event) {
+    const userInput = event.target.value;
+    setName((prevState) => {
+      return {
+        ...prevState,
+        firstname: userInput,
+      };
+    });
+  }
+  ///////////////////// user description update
+
+  const descSubmit = (e) => {
+    e.preventDefault();
+
+    let userId = 0;
+    if (localStorage.getItem("user-id")) {
+      userId = JSON.parse(localStorage.getItem("user-id"));
+    }
+
+    let theName = userProfile.images.push(name);
+    axios.put(`https://finsta-v2.herokuapp.com/api/users/${userId}/`, desc);
+
+    setDesc(initialDesc);
+  };
+
+  function descChange(event) {
+    const userInput = event.target.value;
+    setDesc((prevState) => {
+      return {
+        ...prevState,
+        desc: userInput,
+      };
+    });
+  }
+  //////////////
 
   function logout() {
     localStorage.clear();
@@ -177,17 +238,12 @@ function UserProfile({ profile }) {
       }
 
       <Container className="user-pictures">
-        {
-          userProfile.images ?
-          userProfile.images.map(image => {
-            return(
-              <div className="image">{image.url}</div>
-            );
-          }): 
-          null
-        }
+        {userProfile.images
+          ? userProfile.images.map((image) => {
+              return <div className="image">{image.url}</div>;
+            })
+          : null}
       </Container>
-     
     </div>
   );
 }
