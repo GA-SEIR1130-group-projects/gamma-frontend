@@ -31,8 +31,17 @@ function UserProfile({ profile }) {
   const initialDesc = {
     desc: "",
   };
+
+  const initialState = {
+    url: "",
+    firstname: "",
+    lastname: "",
+    username: "",
+    password: "",
+    desc: ""
+  }
   const [name, setName] = useState(initialName);
-  const [image, setImage] = useState(initialImage);
+  const [image, setImage] = useState(initialState.url);
   const [desc, setDesc] = useState(initialDesc);
 
   useEffect(() => {
@@ -58,7 +67,6 @@ function UserProfile({ profile }) {
   }, []);
 
 
-  //////////// image submit
   const imageSubmit = (e) => {
     e.preventDefault();
 
@@ -73,7 +81,7 @@ function UserProfile({ profile }) {
       image
     );
 
-    setImage(initialImage);
+    setImage({ url: "" });
   };
 
   function imageChange(event) {
@@ -85,56 +93,7 @@ function UserProfile({ profile }) {
       };
     });
   }
-  //////////////////////// firstname Update
-  const nameSubmit = (e) => {
-    e.preventDefault();
-
-    let userId = 0;
-    if (localStorage.getItem("user-id")) {
-      userId = JSON.parse(localStorage.getItem("user-id"));
-    }
-
-    let theName = userProfile.images.push(name);
-    axios.put(`https://finsta-v2.herokuapp.com/api/users/${userId}/`, name);
-
-    setName(initialName);
-  };
-
-  function nameChange(event) {
-    const userInput = event.target.value;
-    setName((prevState) => {
-      return {
-        ...prevState,
-        firstname: userInput,
-      };
-    });
-  }
-  ///////////////////// user description update
-
-  const descSubmit = (e) => {
-    e.preventDefault();
-
-    let userId = 0;
-    if (localStorage.getItem("user-id")) {
-      userId = JSON.parse(localStorage.getItem("user-id"));
-    }
-
-    let theName = userProfile.images.push(name);
-    axios.put(`https://finsta-v2.herokuapp.com/api/users/${userId}/`, desc);
-
-    setDesc(initialDesc);
-  };
-
-  function descChange(event) {
-    const userInput = event.target.value;
-    setDesc((prevState) => {
-      return {
-        ...prevState,
-        desc: userInput,
-      };
-    });
-  }
-  //////////////
+  
 
   function logout() {
     localStorage.clear();
@@ -172,36 +131,11 @@ function UserProfile({ profile }) {
                   <h2>{userProfile.username}</h2>
                 </div>
                 <div className="user-name">name:{userProfile.firstname}</div>
-                <div className="user-location">
-                  {/* location: {userProfile.location} */}
-                </div>
+                {/* <div className="user-location">
+                  location: {userProfile.location}
+                </div> */}
                 <div className="user-desc">
                   <p>description: {userProfile.desc}</p>
-                </div>
-              </Col>
-              <Col>
-                <div className="user-buttons">
-                  <Form inline>
-                    <Form.Control
-                      placeholder="username"
-                      id="inlineFormInputUsername"
-                    ></Form.Control>
-                    <Button variant="primary"> Update Name</Button>
-                  </Form>
-                  <Form inline>
-                    <Form.Control
-                      placeholder="location"
-                      id="inlineFormInputLocation"
-                    ></Form.Control>
-                    <Button variant="primary"> Update Location</Button>
-                  </Form>
-                  <Form inline>
-                    <Form.Control
-                      placeholder="description"
-                      id="inlineFormDescLocation"
-                    ></Form.Control>
-                    <Button variant="primary"> Update Description</Button>
-                  </Form>
                 </div>
               </Col>
             </Row>

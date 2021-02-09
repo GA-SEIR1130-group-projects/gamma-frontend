@@ -34,6 +34,19 @@
   width: 80%;
 }
 
+.EditProfile > .form-horizontal {
+  display: block;
+  width: 100%;
+  margin: 0 10%;
+  padding-bottom: 5%;
+}
+.EditProfile > h1 {
+  font-weight: 600;
+  font-size: 3rem;
+}
+
+
+
 
 
 
