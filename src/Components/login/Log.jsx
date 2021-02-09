@@ -30,6 +30,7 @@ export default function Header() {
 
 
     console.log(signIn)
+<<<<<<< HEAD:src/Components/login/Log.jsx
     const Signin = (event) => {
         event.preventDefault()
 
@@ -50,6 +51,15 @@ export default function Header() {
         
 
         setSign(initialSignIn);
+=======
+    const Signin = () => {
+        console.log("Starting login...")
+        axois.post("http://localhost:2000/users/login", signIn)
+        .then(res => {
+            console.log(res.data)
+            console.log("Signin complete")
+        })
+>>>>>>> update:src/Components/login/Header.jsx
     }
 
     
