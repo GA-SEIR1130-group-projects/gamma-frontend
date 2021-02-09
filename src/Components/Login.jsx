@@ -1,18 +1,17 @@
 import React from "react";
 import Log from "./login/Log"
 import RegistrationForm from "./login/Registration"
-import { BrowserRouter as Router} from "react-router-dom"
+import { Route } from "react-router-dom"
 
 export default function Login() {
   return (
-    <Router>
       <div className="Login" >
-        <Log/>
-
+        {/* <Log/> */}
+        <Route path="/login" component={Log}/>
         <div className="container d-flex align-items-center flex-column" >
-              <RegistrationForm/>
+              {/* <RegistrationForm/> */}
+        <Route path="/register" component={RegistrationForm} />
         </div>
       </div>
-    </Router>
   );
 }

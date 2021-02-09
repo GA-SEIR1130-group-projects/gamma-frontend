@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import { Route } from "react-router-dom"
 import axois from "axios"
-import axios from "axios"
 import { fireEvent } from "@testing-library/react"
 
 import UserProfile from '../UserProfile';
@@ -16,8 +16,6 @@ export default function Header() {
     const [signIn, setSign] = useState(initialSignIn)
 
     const [users, setUsers] = useState([])
-    const [profile, setProfile] = useState(null);
-
 
     useEffect(() => {
         fetch("https://finsta-v2.herokuapp.com/api/users")
@@ -27,7 +25,6 @@ export default function Header() {
             })
 
     }, [])
-
 
     console.log(signIn)
     const Signin = (event) => {
@@ -39,40 +36,28 @@ export default function Header() {
                 user.username === signIn.username &&
                 user.password === signIn.password
             ) {
-                // axios.get(`https://finsta-v2.herokuapp.com/api/users/${user._id}`)
-                // .then(res => {
-                //     setProfile(res.data);
-                // })
-
                 localStorage.setItem('user-id', JSON.stringify(user._id))
             }
         })
         
 
         setSign(initialSignIn);
+
+    // const Signin = () => {
+    //     console.log("Starting login...")
+    //     axois.post("http://localhost:2000/users/login", signIn)
+    //     .then(res => {
+    //         console.log(res.data)
+    //         console.log("Signin complete")
+    //     })
     }
 
-    
-
-  
-    const handleUsername = event => {
-        const userInput = event.target.value.toLowerCase()
-        setSign(prevState => {
-            return {
-                ...prevState,
-                username: userInput
-            }
-        })
-    }
-
-    const handlePassword = event => {
-        const userInput = event.target.value.toLowerCase()
-        setSign(prevState => {
-            return {
-                ...prevState,
-                password: userInput
-            }
-        })
+    const handleChange = event => {
+        const {id , value} = event.target
+        setSign(prestate => ({
+            ...prestate,
+            [id] : value
+        }))
     }
 
     
@@ -84,16 +69,18 @@ export default function Header() {
                     <form className=" p-2 m-3">
                         <label className="m-1 mr-2">Username:</label>
                         <input type="text"
+                                id="username"
                                 placeholder="Username"
                                 value={signIn.username}
-                                onChange={handleUsername}
+                                onChange={handleChange}
                         />
                         
                         <label className="m-1 mr-2">Password:</label>
                         <input type="password"
+                                id="password"
                                 placeholder="Password"
                                 value={signIn.password}
-                                onChange={handlePassword}
+                                onChange={handleChange}
                         />
                     </form>
                     <button
@@ -102,11 +89,11 @@ export default function Header() {
                         onClick={Signin}
                     > <Link to="/userprofile">Login</Link>
                     </button>
-                    Not a member? <Link to={"/Register"} className="text-warning">
+                    Not a member? <Link to={"/register"} className="text-warning">
                         Register here
                     </Link>
                 </div>
             </div>
         </nav>
     )
-}
+    }

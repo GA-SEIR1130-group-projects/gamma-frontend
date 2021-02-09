@@ -10,6 +10,8 @@ import Footer from "./Components/Footer";
 import Login from "./Components/Login";
 import UserProfile from "./Components/UserProfile";
 import PicturePost from "./Components/PicturePost"
+import RegistrationForm from "./Components/Login"
+
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
       
       <Route path="/login" component={Login} />
       <Route path="/post" exact component={PicturePost}/>        
+      <Route path="/register" component={RegistrationForm} />
+
 
       <div className="footer">
         <Footer />
