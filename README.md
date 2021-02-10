@@ -48,6 +48,25 @@ The initial landing page blueprint
 ## Development Team:
 >
 
+Bips, Abdi, Cyberbully Naz, Jeff
+
+
+## MVP:
+>
+Full stack web app that allows users to store user data to a backend API, create, read, update, and delete their data. 
+
+
+
+
+
+## User Stories:
+>
+As the user I want to be able to login and see my pictures, to know what I have saved.
+As the user I want to be able to delete items from my collection.
+As the user I want to be able to add new items to my collection.
+
+
+
 
 
 
