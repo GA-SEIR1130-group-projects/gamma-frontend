@@ -22,7 +22,7 @@ of pictures, posted by finsta users.
 It is easy to login to finsta, or register a new user account.
 
 >
-![finsta user profile](https://user-images.githubusercontent.com/55113750/107474256-a628d800-6b37-11eb-9e9d-ad106f70c240.png)
+![image](https://media.git.generalassemb.ly/user/32615/files/da10f700-6b51-11eb-9080-8a168a29c8b4)
 
 Once a user is logged in, they can add images from their user profile. 
 
@@ -52,10 +52,14 @@ Bips, Abdi, Cyberbully Naz, Jeff
 
 ## MVP:
 >
-Full stack web app that allows users to store user data to a backend API, create, read, update, and delete their data. 
+- Frontend: The user can create an account, login and logout of that account, and the home page should render all the user images that has already been set before hand.
+- Backend: A fully functional RESTful API that can operate full CRUD on the database 
 
 
-
+## Stretch Goals
+- The user has the oppertunity to update their information via forms
+- They can change their password, username, and even delet their account
+- With the use of modals the user can grab an url link from the web and add images to their profile page, they can also add descriptions to their image.
 
 
 ## User Stories:
