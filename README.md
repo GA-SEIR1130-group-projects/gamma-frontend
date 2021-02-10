@@ -47,7 +47,10 @@ Users can also change their password.
 ## Development Team:
 >
 
-Bips, Abdi, Cyberbully Naz, Jeff
+- Bips = SCRUM Master
+- Abdi = App visuals and graphics
+- Jeff = Frontend functionality
+- Nazeer = Backend and GIT master 
 
 
 ## MVP:
