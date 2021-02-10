@@ -1,0 +1,15 @@
+img.Image { max-width: 100%;}
+div#ImageContainer { width: 350px;}
+body{
+background-color: black;
+
+background-image:
+    radial-gradient(
+      rgba(0, 0, 0, 0.836),
+      rgb(26, 49, 45)
+    )
+    
+    ;
+    font-family: 'Permanent Marker';
+    font-weight: bold;
+}

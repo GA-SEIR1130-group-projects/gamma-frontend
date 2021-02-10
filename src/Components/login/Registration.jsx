@@ -1,15 +1,17 @@
-import React, {useState} from "react"
-// const axios = require('axios');
+import React, { useState } from "react"
 import axios from "axios"
 
 
 export default function RegistrationForm() {
-    const [info, setInfo] = useState({
+    
+    const initialInfo = {
         firstname: "",
         lastname: "",
         username: "",
         password: ""
-    })
+    }
+
+    const [info, setInfo] = useState(initialInfo)
     console.log("This is working")
 
 
@@ -20,14 +22,19 @@ export default function RegistrationForm() {
         clicked()
         e.preventDefault()
         sendDetailsToServer()
-
+        setInfo(initialInfo)
     }
 
     console.log(info)
     const sendDetailsToServer = () => {
         console.log("Starting process...")
         
-        if(info.firstname.length && info.lastname.length && info.username.length && info.password.length) {
+        if(
+            info.firstname.length && 
+            info.lastname.length && 
+            info.username.length && 
+            info.password.length
+        ) {
             console.log("Connecting to url")
             axios.post("https://finsta-v2.herokuapp.com/api/users", info)
             .then(res => {
@@ -35,66 +42,41 @@ export default function RegistrationForm() {
             }, err => {
                 console.log(err)
             })
-}
+        }
     }
 
-    const handleLast = event => {
-        const userInput = event.target.value.toLowerCase()
-        setInfo(prevState => {
-            return {
-                ...prevState,
-                lastname: userInput
-            }
-        })
-    }
+    const handleChange = event => {
+        const {id , value} = event.target
+        setInfo(prestate => ({
+            ...prestate,
+            [id] : value
+        }))
+    }  
 
-    const handleFirst = event => {
-        const userInput = event.target.value.toLowerCase()
-        setInfo(prevState => {
-            return {
-                ...prevState,
-                firstname: userInput
-            }
-        })
-    }
-
-    const handleUsername = event => {
-        const userInput = event.target.value.toLowerCase()
-        setInfo(prevState => {
-            return {
-                ...prevState,
-                username: userInput
-            }
-        })
-    }
-
-    const handlePassword = event => {
-        const userInput = event.target.value.toLowerCase()
-        setInfo(prevState => {
-            return {
-                ...prevState,
-                password: userInput
-            }
-        })
-    }
-
+    // className="card col-12 col-lg-4 login-card mt-2 hv-center"
     return(
-        <div className="card col-12 col-lg-4 login-card mt-2 hv-center" >
+        <div className="Registration card col-10 login-card mt-2 hv-center">
             <form>
-            <small id="usernameHelp" className="form-text text-muted" >We never share personal information, this is a safe space.</small>
+                <small id="usernameHelp" className="form-text text-muted">
+                    We never share personal information, this is a safe space.
+                </small>
 
                 <div className="form-group">
                     <label htmlFor="Fname">First name here</label>
                     <input type="text"
+                           id="firstname"
                            className="form-control"
                            placeholder="First Name Here"
-                           onChange={handleFirst}
+                           value={info.firstname}
+                           onChange={handleChange}
                     />
                     <label htmlFor="Lname">Last name here</label>
                     <input type="text"
+                           id="lastname"
                            className="form-control"
                            placeholder="Last Name Here"
-                           onChange={handleLast}
+                           value={info.lastname}
+                           onChange={handleChange}
                     />
                 </div>
                 <div className="form-group text-left" >
@@ -104,18 +86,18 @@ export default function RegistrationForm() {
                            id="username"
                            aria-describedby="usernameHelp"
                            placeholder="Enter username"
-                        //    value={Username}
-                           onChange={handleUsername}
+                           value={info.username}
+                           onChange={handleChange}
                     />
                 </div>
                 <div className="form-group text-left">
-                    <label htmlFor="exampleinputPassword">Confirm Password</label>
+                    <label htmlFor="exampleinputPassword">Password</label>
                     <input type="password"
                            className="form-control"
-                           id="confirmPassword"
+                           id="password"
                            placeholder="Confirm Password"
-                        //    value={Password}
-                           onChange={handlePassword}
+                           value={info.password}
+                           onChange={handleChange}
                     />
                 </div>
                 <button type="submit"

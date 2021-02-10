@@ -1,10 +1,18 @@
 .App {
   text-align: center;
+  width: 80%;
+  margin: 0 auto;
 }
 .Header {
   background-color: #25274d;
   color: #2e9cca;
+  font-size: 20px;
   justify-content: flex-start;
+}
+
+a {
+  color: rgb(192, 86, 148);
+  /* color: rgb(255, 0, 149); */
 }
 
 .Footer {
@@ -13,13 +21,76 @@
 }
 
 .Home {
-  background-color: #464866;
-  color: #aaabb8;
+  background-color: rgb(162, 208, 209);
+  background-image:
+    linear-gradient(
+      to top right, 
+      rgba(255, 0, 0, 0.671), #f09206be
+    );
+  color: #434561;
 }
 
 .NavLink {
   justify-content: flex-start;
 }
+
+.Login {
+  background-color: #464866;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.Registration {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.EditProfile > .form-horizontal {
+  display: block;
+  width: 100%;
+  margin: 0 10%;
+  padding-bottom: 5%;
+}
+.EditProfile > h1 {
+  font-weight: 600;
+  font-size: 3rem;
+}
+
+.front-images {
+  display: flex;
+}
+
+.home-container {
+  display: flex;
+  overflow: hidden;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+@media (max-width: 410px) {
+  .home-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  body {
+    background-color: crimson;
+    color: white;
+  }
+
+  .App {
+    color: crimson;
+  }
+
+  a {
+    color: blueviolet;
+  }
+}
+
 /* .App-logo {
   height: 40vmin;
   pointer-events: none;
