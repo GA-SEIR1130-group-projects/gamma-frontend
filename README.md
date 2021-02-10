@@ -37,13 +37,12 @@ Users may also update their profiles, by changing their names or user descriptio
 Users can also change their password. 
 
 
-## Initial Wireframes
->
-![app landing](https://user-images.githubusercontent.com/55113750/107474648-57c80900-6b38-11eb-990a-b0fa21bddfec.png)
+## Wireframes
 
-The initial landing page blueprint
+![Screen Shot 2021-02-10 at 3 32 44 AM](https://media.git.generalassemb.ly/user/32615/files/c5802f00-6b50-11eb-8d95-8f02614c7029)
 
->
+![image](https://media.git.generalassemb.ly/user/32615/files/1001ab80-6b51-11eb-9d76-0750bddb7fe5)
+
 
 ## Development Team:
 >
