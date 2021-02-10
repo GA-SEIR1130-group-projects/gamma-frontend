@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Finsta App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Finsta is an image posting and sharing website. The user can login and post images to their profile. 
+The landing page renders a set of random images based on the user's added images.
 
-## Available Scripts
 
-In the project directory, you can run:
+## Technologies Used
+Finsta utilizes React, Bootsrap, JavaScript and CSS in the front end app development. 
+The front end for the finsta App is hosted on Heroku.
+Finsta utilizes github and git for version contorl and collaboration.
 
-### `yarn start`
+## App Screenshots
+>
+![finstalanding](https://user-images.githubusercontent.com/55113750/107474197-8b566380-6b37-11eb-831a-2b29c184262c.png)
+When users first arrive to finsta, they are greeted with an array
+of pictures, posted by finsta users.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+>
+![finstalogin](https://user-images.githubusercontent.com/55113750/107474229-9b6e4300-6b37-11eb-81e3-d0e6d23a0bf9.png)
+It is easy to login to finsta, or register a new user account.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+>
+![finsta user profile](https://user-images.githubusercontent.com/55113750/107474256-a628d800-6b37-11eb-9e9d-ad106f70c240.png)
+Once a user is logged in, they can add images from their user profile. 
 
-### `yarn test`
+>
+![finsta update profile](https://user-images.githubusercontent.com/55113750/107474278-b50f8a80-6b37-11eb-924e-caf1ce2188da.png)
+Users may also update their profiles, by changing their names or user description. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+>
+![finstachangepassword](https://user-images.githubusercontent.com/55113750/107474322-c193e300-6b37-11eb-8721-3316000aa7ac.png)
+Users can also change their password. 
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Initial Wireframes
+>
+![app landing](https://user-images.githubusercontent.com/55113750/107474648-57c80900-6b38-11eb-990a-b0fa21bddfec.png)
+The initial landing page blueprint
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Development Team:
+>
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
