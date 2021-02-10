@@ -16,7 +16,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="home-container">
+    <div className="home-container d-flex flex-column">
       {
         users.map((item) => {
           if (item.images.length) {
@@ -26,12 +26,13 @@ export default function Home() {
               for (let i = 0; i < item.images.length; i++) {
                 return (
                   <CardDeck
-                    style={{ width: "16rem" }}
+                    // style={{ width: "16rm" }}
                     variant="top"
-                    class="d-flex align-self-start justify-content-center flex-wrap"
+                    // class="d-flex align-self-start justify-content-center flex-wrap"
+                  className="d-flex flex-column"
                   >
                     <Card>
-                      <div className="front-images">
+                      <div className="front-images d-flex flex-column">
                         <Card.Img src={item.images[randIndex].url} />
                       </div>
                     </Card>
@@ -42,12 +43,12 @@ export default function Home() {
               for (let i = 0; i < 5; i++) {
                 return (
                   <CardDeck
-                    style={{ width: "24rem" }}
+                    // style={{ width: "10rem" }}
                     variant="top"
-                    class="d-flex align-self-start justify-content-center flex-wrap"
+                    // class="d-flex align-self-start justify-content-center flex-wrap"
                   >
                     <Card>
-                      <div class="d-flex flex-wrap" className="front-images">
+                      <div class="d-flex flex-column" className="front-images">
                         <Card.Img
                           variant="top"
                           src={item.images[randIndex].url}
@@ -65,5 +66,3 @@ export default function Home() {
     </div>
   );
 }
-
-

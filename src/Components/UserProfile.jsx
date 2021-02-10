@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -101,7 +100,7 @@ function UserProfile({ profile }) {
             role="group"
             aria-label="Basic example"
           >
-            <button type="button" className="btn btn-secondary">
+            <button type="button" className="btn btn-dark">
               <Link 
                 to="/deleteProfile" 
                 style={{
@@ -109,7 +108,7 @@ function UserProfile({ profile }) {
                   textDecoration: "none"
                 }}>Delete Profile</Link>
             </button>
-            <button type="button" className="btn btn-secondary">
+            <button type="button" className="btn btn-dark">
               <Link 
                 to="/editProfile"
                 style={{
@@ -117,7 +116,7 @@ function UserProfile({ profile }) {
                   textDecoration: "none"
                 }}>Edit Profile</Link>
             </button>
-            <button type="button" className="btn btn-secondary">
+            <button type="button" className="btn btn-dark">
               <Link 
                 to="/changePassword"
                 style={{
@@ -127,7 +126,7 @@ function UserProfile({ profile }) {
             </button>
             <button
               type="button"
-              className="btn btn-outline-dark"
+              className="btn btn-danger"
               onClick={logout}
             >
               Logout
@@ -195,13 +194,11 @@ function UserProfile({ profile }) {
                 </div>
               </div>
             </div>
-
-
           </Container>
         </>
       )}
 
-      <Container className="user-pictures">
+      <div className="user-pictures">
         {userProfile.images
           ? userProfile.images.map((image) => {
               return (
@@ -218,7 +215,7 @@ function UserProfile({ profile }) {
               );
             })
           : null}
-      </Container>
+      </div>
     </div>
   );
 }

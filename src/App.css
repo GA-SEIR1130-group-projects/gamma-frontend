@@ -6,7 +6,13 @@
 .Header {
   background-color: #25274d;
   color: #2e9cca;
+  font-size: 20px;
   justify-content: flex-start;
+}
+
+a {
+  color: rgb(192, 86, 148);
+  /* color: rgb(255, 0, 149); */
 }
 
 .Footer {
@@ -15,9 +21,13 @@
 }
 
 .Home {
-  background-color: #cfcfed;
+  background-color: rgb(162, 208, 209);
+  background-image:
+    linear-gradient(
+      to top right, 
+      rgba(255, 0, 0, 0.671), #f09206be
+    );
   color: #434561;
-  height: 100vh;
 }
 
 .NavLink {
@@ -51,10 +61,36 @@
 }
 
 .home-container {
-  /* background-color: #25274d; */
   display: flex;
   overflow: hidden;
 }
+
+.image {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+@media (max-width: 410px) {
+  .home-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  body {
+    background-color: crimson;
+    color: white;
+  }
+
+  .App {
+    color: crimson;
+  }
+
+  a {
+    color: blueviolet;
+  }
+}
+
 /* .App-logo {
   height: 40vmin;
   pointer-events: none;
