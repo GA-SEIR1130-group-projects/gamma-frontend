@@ -1,7 +1,7 @@
 # Finsta Proxy App
 
 Finsta is an image posting and sharing website. The user can login and post images to their profile. 
-The landing page renders a set of random images based on the user's added images.
+The landing page renders a set of random images based on the user's added images. Here is a demo version of the project https://finsta-proxy.herokuapp.com/ 
 
 
 ## Technologies Used
